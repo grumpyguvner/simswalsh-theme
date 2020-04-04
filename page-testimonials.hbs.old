@@ -1,0 +1,31 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+{{> "site-nav"}}
+
+{{!-- The main content area --}}
+<main role="main">
+    <div class="container p-5">
+        {{#get "posts" limit="all" filter="status:published+page:true"}}
+            {{#foreach posts}}
+                {{#has slug="testimonials"}}
+                    <div class="row">
+                        <h1>{{title}}</h1>
+                    </div>
+                    <div class="row">
+                        {{content}}
+                    </div>
+                {{/has}}
+            {{/foreach}}
+        {{/get}}
+            
+        <div class="row">
+            {{#get "posts" limit="all" order="published_at desc" filter="status:published+page:false+tags:testimonial"}}
+                {{#foreach posts}}
+                    {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
+                    {{> "post-card"}}
+                {{/foreach}}
+            {{/get}}
+        </div>
+    </div>
+</main>

@@ -1,0 +1,12 @@
+<div class="col-md-6 d-flex pb-3">
+    <article class="card author {{#unless profile_image}} no-image{{/unless}}">
+        {{#if profile_image}}
+            <img class="card-img-top" src="{{profile_image}}" alt="{{name}}" />
+        {{/if}}
+        <h5 class="card-header"><a href="{{url}}">{{name}}</a></h5>
+        <div class="card-body">
+            <p class="card-text">{{bio}}</p>
+            <p class="text-right mb-0"><a class="card-link" href="{{url}}">Read more...</a></p>
+        </div>
+    </article>
+</div>

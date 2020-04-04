@@ -1,0 +1,19 @@
+<header class="{{^is "home"}}d-none d-lg-block{{/is}}">
+    <div class="container p-5 site-header">
+      <div class="container text-center">
+        <div class="logo">
+            {{#if @site.logo}}
+                <img src="{{@site.logo}}" class="img-fluid" alt="{{@site.title}}" />
+            {{else}}
+                {{> "icons/logo"}}
+            {{/if}}
+        </div>
+        <div class="site-title">
+            <span class="h1">{{@site.title}}</span>
+        </div>
+        <div class="site-description">
+            <span class="h4">{{@site.description}}</span>
+        </div>
+      </div>
+    </div>
+</header>

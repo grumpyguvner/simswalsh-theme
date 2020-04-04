@@ -1,0 +1,16 @@
+.site-header {
+  padding: 5vh; }
+
+.site-header * {
+  line-height: normal; }
+
+.site-header .logo {
+  margin: auto;
+  height: 20vh;
+  width: 20vh; }
+
+.navbar-brand svg {
+  height: 1.25rem; }
+
+main {
+  padding: 5vh; }

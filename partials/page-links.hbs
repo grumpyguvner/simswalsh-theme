@@ -1,0 +1,14 @@
+<div class="row">
+    {{#get "posts" limit="all" include="tags" filter="featured:true+tags:[{{searchTag}}]" order="published_at desc"}}
+        {{#foreach posts}}
+            {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
+            {{> "page-link"}}
+        {{/foreach}}
+    {{/get}}
+    {{#get "posts" limit="all" include="tags" filter="featured:false+tags:[{{searchTag}}]" order="published_at desc"}}
+        {{#foreach posts}}
+            {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
+            {{> "page-link"}}
+        {{/foreach}}
+    {{/get}}
+</div>

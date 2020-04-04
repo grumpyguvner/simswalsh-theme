@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {{!-- Base Meta --}}
+    <meta charset="utf-8" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    {{!-- Document Settings --}}
+    <title>{{meta_title}}</title>
+    
+    {{!-- FavIcon Settings --}}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset 'apple-touch-icon.png'}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset 'favicon-32x32.png'}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset 'favicon-16x16.png'}}">
+    <link rel="manifest" href="{{asset 'site.webmanifest'}}">
+    <link rel="mask-icon" href="{{asset 'safari-pinned-tab.svg'}}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    
+    {{!-- Fonts --}}
+    <style type='text/css'>
+        @font-face {
+            font-family: 'Walkway';
+            src: url('/assets/fonts/WalkwayBold.eot');
+            src: url('/assets/fonts/WalkwayBold.eot?#iefix') format('embedded-opentype'),
+                url('/assets/fonts/WalkwayBold.woff2') format('woff2'),
+                url('/assets/fonts/WalkwayBold.woff') format('woff'),
+                url('/assets/fonts/WalkwayBold.ttf') format('truetype'),
+                url('/assets/fonts/WalkwayBold.svg#WalkwayBold') format('svg');
+            font-weight: bold;
+            font-style: normal;
+        }
+        @import url('https://fonts.googleapis.com/css?family=Nunito')
+    </style>
+
+    {{!-- Styles --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/global.css"}}" />
+
+    {{!-- Scripts --}}
+{{!--     <script src="{{asset "js/livereload.js"}}"></script> --}}
+    
+    {{!-- This tag outputs SEO meta+structured data and other important settings --}}
+    {{ghost_head}}
+</head>
+<body class="{{body_class}}">
+    
+        {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+        {{{body}}}
+
+        {{!-- The email subscribe content --}}
+        {{#if @labs.members}}
+	{{> "subscribe_form"}}
+        {{/if}}
+                
+        {{!-- The footer at the very bottom of the screen --}}
+        <footer class="{{#unless @labs.subscribers}}mt-4{{/unless}} pt-4">
+            <!--Footer Links-->
+            <div class="container text-muted">
+                <div class="row">
+
+                    <!--First column-->
+                    <div class="col-md-9">
+                    {{#get "posts" limit="all" filter="slug:footer"}}
+                        {{#foreach posts}}
+                            <h5>{{title}}</h5>
+                            <div>
+                                {{content}}
+                            </div>
+                        {{/foreach}}
+                    {{/get}}
+                    </div>
+                    <!--/.First column-->
+
+                    <!--Second column-->
+                    <div class="col-md-3">
+                        <h5>Follow Us</h5>
+                        <ul class="list-unstyled">
+                            {{#if @site.facebook}}
+                                <li>
+                                    <a href="{{facebook_url @site.facebook}}" target="_blank" rel="noopener">Facebook</a>
+                                </li>
+                            {{/if}}
+                            {{#if @site.twitter}}
+                                <li>
+                                    <a href="{{twitter_url @site.twitter}}" target="_blank" rel="noopener">Twitter</a>
+                                </li>
+                            {{/if}}
+                        </ul>
+                    </div>
+                    <!--/.Second column-->
+                </div>
+            </div>
+            <!--/.Footer Links-->
+
+            <!--Copyright-->
+            <div class="footer-copyright py-3 text-center text-muted">
+                A <a href="http://www.grumpyguvner.com" target="_blank" rel="noopener">Grumpy Guvner</a> website. &copy; {{@site.title}} {{date format="YYYY"}}
+            </div>
+            <!--/.Copyright-->
+
+        </footer>
+        <!--/.Footer-->
+
+    {{!-- Scripts --}}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+{{ghost_foot}}
+</body>
+</html>

@@ -1,0 +1,12 @@
+<div class="col-lg-4 col-md-6 d-flex pb-3">
+    <article class="card {{post_class}}{{#unless feature_image}} no-image{{/unless}}">
+            {{#if feature_image}}   
+                <img class="card-img-top" src="{{feature_image}}" alt="" />
+            {{/if}}
+            <h5 class="card-header"><a href="{{url}}">{{title}}</a></h5>
+            <div class="card-body">
+                <p class="card-text">{{excerpt words="33"}}</p>
+                <p class="text-right mb-0"><a class="card-link" href="{{url}}">Read more...</a></p>
+            </div>
+    </article>
+</div>
